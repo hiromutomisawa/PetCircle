@@ -1,24 +1,34 @@
-# README
+# Pet Circle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ペットを通じたSNSサイト
+フォロー機能、いいね機能、検索機能、タグ付け機能を実装予定
 
-Things you may want to cover:
+### サイトテーマ
+ペットの飼育経験の共有できるSNSサイト
 
-* Ruby version
 
-* System dependencies
+### テーマを選んだ理由
+コロナ禍におけるペット飼育の増加を受け、
+ペット飼育の経験を共有できるサイトが欲しいと思ったため
 
-* Configuration
+### ターゲットユーザ
+ペットの飼育が初めての人
+ペットの飼育経験者
 
-* Database creation
+### 主な利用シーン
+ペットの自慢や、飼育方法などを共有したい時
 
-* Database initialization
 
-* How to run the test suite
+## 設計書
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 機能一覧
+https://docs.google.com/spreadsheets/d/17xG8lH-g6-smSeEEkhk-B8UVLRPjIybiE7GnyHEMtxE/edit?usp=sharing
 
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
