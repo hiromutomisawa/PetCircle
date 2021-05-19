@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h2><%= @post_blog.title %></h2>
+  </div>
+  <div class="row">
+    <h5><%= @post_blog.updated_at %></h5>
+  </div>
+  <div class="row">
+    <%= attachment_image_tag @post_blog,:image %>
+  </div>
+  <div class="row">
+    <%= @post_blog.body %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% if @post_blog.user == current_user %>
+      <td><%= link_to "Edit", edit_post_blog_path(@post_blog),class:"btn btn-sm btn-success edit_post_blog_#{@post_blog.id}" %></td>
+      <td>
+        <%= link_to "Destroy", post_blog_path(@post_blog), method: :delete, "data-confirm" => "Are you sure?",class:"btn btn-sm btn-danger destroy_post_blog_#{@post_blog.id}" %>
+      </td>
+    <% end %>
+  </div>
+</div>

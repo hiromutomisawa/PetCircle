@@ -1,5 +1,6 @@
 class PostBlog < ApplicationRecord
 
+  attachment :image
   # association
   belongs_to :user
   has_many :tag_maps, dependent: :destroy
@@ -11,4 +12,7 @@ class PostBlog < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  validates :title, presence: true
+  validates :body, presence: true
 end
