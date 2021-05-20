@@ -7,7 +7,7 @@
     <div class-"col-8"><h2><%= @post_blog.title %></h2></div>
   </div>
   <div class="row">
-    <h5><%= @post_blog.updated_at %></h5>
+    <h5> <%= @post_blog.updated_at.strftime('%Y/%m/%d') %></h5>
   </div>
   <div class="row">
     <%= attachment_image_tag @post_blog,:image %>
@@ -28,17 +28,37 @@
 </div>
 <div class="container">
   <p>コメント件数：<%= @post_blog.post_comments.count %></p>
+   <% if @post_blog.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_blog_favorites_path(@post_blog), method: :delete do %>
+        いいね<%= @post_blog.favorites.count %>♥
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_blog_favorites_path(@post_blog), method: :post do %>
+        いいね<%= @post_blog.favorites.count %>♡
+      <% end %>
+    </p>
+    <% end %>
   <% @post_blog.post_comments.each do |f| %>
   <div class="row">
-    <p><%= attachment_image_tag f.user, :profile_image, size: "50x50" %></p>
-    <%= f.user.name %>
-    <%= f.created_at.strftime('%Y/%m/%d') %><%= f.comment %>
+    <div class="col-8">
+      <p><%= attachment_image_tag f.user, :profile_image, size: "50x50" %></p>
+      <%= f.user.name %>
+      <%= f.created_at.strftime('%Y/%m/%d') %><%= f.comment %>
+    </div>
+    <div class="col-4">
+      <% if f.user == current_user %>
+      <%= link_to "削除", post_blog_post_comment_path(f.post_blog, f), method: :delete %>
+      <% end %>
+    </div>
   </div>
   <% end %>
-  <%= form_with(model:[@post_blog, @post_comment], local: true) do |f| %>
   <div class="row">
+    <%= form_with(model:[@post_blog, @post_comment], local: true) do |f| %>
     <div class="col-8"><%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", cols: "80", rows: "5" %></div>
     <div class="col-4"> <%= f.submit "送信する" %></div>
+    <% end %>
   </div>
-  <% end %>
 </div>
