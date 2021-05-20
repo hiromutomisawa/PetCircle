@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
-  resources :users, only: [:new, :create, :index, :show, :destroy, :edit ] do
+  resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update ] do
     resources :pets, only: [:new, :create, :index, :show, :destroy, :edit ]
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'

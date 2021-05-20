@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  attachment :image
+  attachment :profile_image
   # association
   has_many :pets, dependent: :destroy
   has_many :post_blogs, dependent: :destroy
@@ -32,4 +33,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  validates :name, presence: true
+
 end

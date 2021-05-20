@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>プロフィール</h2>
+  <div class="row">
+    <div class="col-2 bg-primary"><%= attachment_image_tag @user, :profile_image, size: "150x150" %></div>
+    <div class="col-8 bg-success">
+      <h5>ニックネーム</h5>
+      <div class="row"><%= @user.name %></div>
+      <h5>自己紹介</h5>
+      <div class="row"><%= @user.introduction %></div>
+    </div>
+    <div class="col-2 bg-primary">
+      <% if @user == current_user %>
+        <%= link_to "Edit", edit_user_path(@user),class:"btn btn-sm btn-success edit_user_#{@user.id}" %>
+      <% end %>
+    </div>
+  </div>
+  <h2>ペットプロフィール</h2>
+  <div class="row"></div>
+  <div class="row"></div>
+</div>

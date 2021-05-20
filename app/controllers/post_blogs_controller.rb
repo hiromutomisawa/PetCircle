@@ -1,4 +1,5 @@
 class PostBlogsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @post_blogs = PostBlog.all
@@ -17,6 +18,8 @@ class PostBlogsController < ApplicationController
 
   def show
     @post_blog = PostBlog.find(params[:id])
+    @user = @post_blog.user
+    @post_comment = PostComment.new
   end
 
   def edit
