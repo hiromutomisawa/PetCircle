@@ -1,8 +1,15 @@
 class PostBlogsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
 
   def index
-    @post_blogs = PostBlog.all
+    if params[:tag_id]
+      @tag_list = Tag.all
+      @tag = Tag.find(params[:tag_id])
+      @post_blogs = @tag.post_blogs.all
+    else
+      @tag_list = Tag.all
+      @post_blogs = PostBlog.all
+    end
   end
 
   def new
@@ -12,8 +19,13 @@ class PostBlogsController < ApplicationController
   def create
     @post_blog = PostBlog.new(post_blog_params)
     @post_blog.user_id = current_user.id
-    @post_blog.save
-    redirect_to post_blogs_path
+    # タグネームを","で区切りtagで保存する
+    tag_list = params[:post_blog][:name].split(",")
+    if @post_blog.save
+      # save_blogsメソッドでタグを保存。メソッドはモデルで設定
+      @post_blog.save_blogs(tag_list)
+    end
+    redirect_to post_blog_path(@post_blog)
   end
 
   def show
@@ -24,6 +36,7 @@ class PostBlogsController < ApplicationController
 
   def edit
     @post_blog = PostBlog.find(params[:id])
+    @tag_list = @post_blog.tags.pluck(:name).join(",")
   end
 
   def destroy
@@ -34,7 +47,9 @@ class PostBlogsController < ApplicationController
 
   def update
     @post_blog = PostBlog.find(params[:id])
+    tag_list = params[:post_blog][:name].split(",")
     if @post_blog.update(post_blog_params)
+      @post_blog.save_blogs(tag_list)
       flash[:success] = "更新が完了しました。"
       redirect_to post_blog_path(@post_blog.id)
     else

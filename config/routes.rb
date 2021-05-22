@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'homes#top'
+  root to: 'post_blogs#index'
   resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update ] do
     resources :pets, only: [:new, :create, :index, :show, :destroy, :edit ]
     resource :relationships, only: [:create, :destroy]

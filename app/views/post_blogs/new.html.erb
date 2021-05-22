@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row bg-secondary">
-    <h1>ブログの新規登録画面</h1>
+    <h1>ブログの新規作成画面</h1>
   </div>
   <h2>作成フォーム</h2>
   <%= form_with model:@post_blog, local:true do |f| %>
@@ -17,6 +17,11 @@
       <div class="form-group">
         <%= f.label :body,"本文" %><br>
         <%= f.text_area :body, :placeholder => "ここに記事を記述します",cols: "80", rows: "10" %>
+      </div>
+        <div class="tag">
+          <%= f.label :tag %>
+          <%= f.text_field :name, value: @tag_list %>
+        </div>
       </div>
     <div class="text-center">
       <%= f.submit "新規投稿", class: "btn btn-lg btn-success "%>

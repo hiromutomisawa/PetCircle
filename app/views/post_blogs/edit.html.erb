@@ -18,6 +18,8 @@
               <%= f.text_field :title %><br>
             <label for="body">本文</label><br>
             <%= f.text_field :body %><br>
+            <label for="tag">タグ</label><br>
+            <%= f.text_field :name,value: @tag_list %>
           </div><br>
           <div>
             <%= f.submit '更新', class:"btn btn-success" %>
