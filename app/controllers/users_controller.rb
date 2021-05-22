@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @post_blogs = @user.post_blogs
   end
 
   def update

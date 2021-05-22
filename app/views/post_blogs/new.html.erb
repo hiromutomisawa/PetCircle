@@ -1,32 +1,12 @@
-<div class="container">
-  <div class="row bg-secondary">
-    <h1>ブログの新規作成画面</h1>
-  </div>
-  <h2>作成フォーム</h2>
-  <%= form_with model:@post_blog, local:true do |f| %>
-  <div class="row bg-secondary">
-    <div class="col-md-12">
-     <div class="form-group">
-        <%= f.label :image,"投稿画像" %><br>
-        <%= f.attachment_field :image %>
-      </div>
-      <div class="form-group">
-        <%= f.label :title,"タイトル" %><br>
-        <%= f.text_field :title %>
-      </div>
-      <div class="form-group">
-        <%= f.label :body,"本文" %><br>
-        <%= f.text_area :body, :placeholder => "ここに記事を記述します",cols: "80", rows: "10" %>
-      </div>
-        <div class="tag">
-          <%= f.label :tag %>
-          <%= f.text_field :name, value: @tag_list %>
-        </div>
-      </div>
-    <div class="text-center">
-      <%= f.submit "新規投稿", class: "btn btn-lg btn-success "%>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3">
+      <h3 class="text-center"><strong>タグ一覧</strong></h3>
+      <%= render 'post_blogs/tagbar', tag_lists: @tag_lists %>
     </div>
-    <% end %>
+    <div class="col-9">
+      <h3 class="text-center"><strong>新規投稿</strong></h3>
+      <%= render 'post_blogs/form', post_blog: @post_blog %>
     </div>
   </div>
 </div>

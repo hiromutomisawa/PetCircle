@@ -3,17 +3,18 @@ class PostBlogsController < ApplicationController
 
   def index
     if params[:tag_id]
-      @tag_list = Tag.all
+      @tag_lists = Tag.all
       @tag = Tag.find(params[:tag_id])
       @post_blogs = @tag.post_blogs.all
     else
-      @tag_list = Tag.all
+      @tag_lists = Tag.all
       @post_blogs = PostBlog.all
     end
   end
 
   def new
     @post_blog = PostBlog.new
+    @tag_lists = Tag.all
   end
 
   def create
@@ -37,6 +38,7 @@ class PostBlogsController < ApplicationController
   def edit
     @post_blog = PostBlog.find(params[:id])
     @tag_list = @post_blog.tags.pluck(:name).join(",")
+    @tag_lists = Tag.all
   end
 
   def destroy

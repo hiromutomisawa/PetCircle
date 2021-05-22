@@ -1,32 +1,12 @@
- <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h1>編集画面</h1>
-          <% if @post_blog.errors.any? %>
-            <h3><%= @post_blog.errors.count %>errors prohibited this obj from being saved:</h3>
-            <% @post_blog.errors.full_messages.each do |message| %>
-            <ul>
-              <li><%= message %></li>
-            </ul>
-            <% end %>
-          <% end %>
-        <%= form_with model:@post_blog, local: true do |f| %>
-          <div class="form-group">
-            <label for="image">投稿画像</label><br>
-            <%= f.attachment_field :image %><br>
-            <label for="title">タイトル</label><br>
-              <%= f.text_field :title %><br>
-            <label for="body">本文</label><br>
-            <%= f.text_field :body %><br>
-            <label for="tag">タグ</label><br>
-            <%= f.text_field :name,value: @tag_list %>
-          </div><br>
-          <div>
-            <%= f.submit '更新', class:"btn btn-success" %>
-          </div><br>
-        <% end %>
-        <%= link_to "Show",post_blog_path(@post_blog)%> |
-        <%= link_to "Back",post_blogs_path %>
-      </div>
+ <div class="container mt-3">
+  <div class="row">
+    <div class="col-3">
+      <h3 class="text-center"><strong>タグ一覧</strong></h3>
+      <%= render 'post_blogs/tagbar', tag_lists: @tag_lists %>
+    </div>
+    <div class="col-9">
+      <h3 class="text-center"><strong>新規投稿</strong></h3>
+      <%= render 'post_blogs/form', post_blog: @post_blog %>
     </div>
   </div>
+</div>
