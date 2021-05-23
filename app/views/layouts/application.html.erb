@@ -29,6 +29,9 @@
               <li class="nav-item">
                 <%= link_to "Users", users_path, class: 'nav-link text-white fas fa-users' %>
               </li>
+               <li class="nav-item">
+                <%= link_to "NewBlog", new_post_blog_path, class: 'nav-link text-white fas fa-plus-square' %>
+              </li>
               <li class="nav-item">
                 <%= link_to "logout", destroy_user_session_path, class: 'nav-link text-white fas fa-sign-out-alt',method: :delete %>
               </li>
