@@ -66,6 +66,12 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 
-#gem 'bootstrap', '~> 4.5'
+gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
+gem 'pry-byebug'
+# デプロイに使用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
