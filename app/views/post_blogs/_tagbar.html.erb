@@ -1,0 +1,8 @@
+<% tag_lists.each do |f| %>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item border-bottom">
+    <%= link_to f.name, post_blogs_path(tag_id: f.id) %>
+    (<%= f.post_blogs.all.count %>)
+  </li>
+</ul>
+<% end %>
