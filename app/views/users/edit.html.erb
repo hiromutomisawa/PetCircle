@@ -12,7 +12,8 @@
           <% end %>
         <%= form_with model:@user, local: true do |f| %>
           <div class="form-group">
-            <label for="profile_image_id">プロフィール画像</label><br>
+            <label for="profile_image">プロフィール画像</label><br>
+            <%= attachment_image_tag @user, :profile_image , size: "150x150", format: 'jpeg', fallback: "no_image.jpg" %>
             <%= f.attachment_field :profile_image %><br>
             <label for="name">ニックネーム</label><br>
               <%= f.text_field :name %><br>

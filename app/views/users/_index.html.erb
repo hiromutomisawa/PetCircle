@@ -2,7 +2,7 @@
   <div class="row">
     <% users.each do |f|%>
     <div class="card m-3 shadow-sm" style="width:15rem;">
-      <%= attachment_image_tag f, :profile_image, class: "card-img-top" %>
+      <%= attachment_image_tag f, :profile_image, class: "card-img-top", format: 'jpeg', fallback: "no_image.jpg"%>
       <div class="card-body">
         <h5 class="card-name"><%= f.name %></h5>
         <h5 class="card-introduction"><%= f.introduction %></h5>

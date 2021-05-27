@@ -1,4 +1,4 @@
- <%= attachment_image_tag user, :profile_image, size: "150x150", class: "mx-auto d-block" %>
+ <%= attachment_image_tag user, :profile_image, size: "150x150", class: "mx-auto d-block", format: 'jpeg', fallback: "no_image.jpg" %>
   <table class="table" style="width:15rem;">
     <tr>
       <th class="text-nowrap"><small>ニックネーム</small></th>

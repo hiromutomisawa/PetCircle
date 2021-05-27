@@ -11,9 +11,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-light border border-bottom">
         <div class="container">
-          <a class="navbar-brand text-white" href="/">PetCircle</a>
+          <a class="navbar-brand text-black " href="/"><%= image_tag 'logo.jpg', :size =>'100x100'%></a>
           <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,32 +21,32 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-white fas fa-home' %>
+                <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-black fas' %>
               </li>
               <li class="nav-item">
-                <%= link_to "Blogs", root_path, class: 'nav-link text-white fas fa-blog' %>
+                <%= link_to "Blogs", root_path, class: 'nav-link text-black fas' %>
               </li>
               <li class="nav-item">
-                <%= link_to "Users", users_path, class: 'nav-link text-white fas fa-users' %>
+                <%= link_to "Users", users_path, class: 'nav-link text-black fas' %>
               </li>
                <li class="nav-item">
-                <%= link_to "NewBlog", new_post_blog_path, class: 'nav-link text-white fas fa-plus-square' %>
+                <%= link_to "NewBlog", new_post_blog_path, class: 'nav-link text-black fas' %>
               </li>
               <li class="nav-item">
-                <%= link_to "logout", destroy_user_session_path, class: 'nav-link text-white fas fa-sign-out-alt',method: :delete %>
+                <%= link_to "logout", destroy_user_session_path, class: 'nav-link text-black fas',method: :delete %>
               </li>
               <% else %>
               <li class="nav-item">
-                <%= link_to "Home", root_path, class: 'nav-link text-white fas fa-home' %>
+                <%= link_to "Home", root_path, class: 'nav-link text-black fas' %>
               </li>
               <li class="nav-item">
-                <%= link_to "Blogs", root_path, class: 'nav-link text-white fas fa-blog' %>
+                <%= link_to "Blogs", root_path, class: 'nav-link text-black fas' %>
               </li>
               <li class="nav-item">
-                <%= link_to "sign up", new_user_registration_path, class: 'nav-link text-white fas fa-user-plus' %>
+                <%= link_to "sign up", new_user_registration_path, class: 'nav-link text-black fas' %>
               </li>
               <li class="nav-item">
-                <%= link_to "login", new_user_session_path, class: 'nav-link text-white fas fa-sign-in-alt' %>
+                <%= link_to "login", new_user_session_path, class: 'nav-link text-black fas' %>
               </li>
               <% end %>
             </ul>

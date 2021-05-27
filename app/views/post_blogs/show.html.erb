@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class-"col-4">
-      <%= link_to attachment_image_tag(@user, :profile_image, :fill, 50, 50 ),user_path(@user.id) %><br>
+      <%= link_to attachment_image_tag(@user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" ),user_path(@user.id) %><br>
       <%=link_to @user.name, user_path(@user.id) %></td>
     </div>
     <div class-"col-8"><h2><%= @post_blog.title %></h2></div>
