@@ -16,3 +16,17 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.card-img-top{
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+.profile_image{
+  object-fit: contain;
+}
+
+.card-img{
+  object-fit: contain;
+}
