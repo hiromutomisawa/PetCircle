@@ -3,7 +3,7 @@
     <% post_blogs.each do |f|%>
     <div class="card m-3 shadow-sm" style="width:15rem;">
       <%= attachment_image_tag f, :image, class: "card-img-top" %>
-      <div class="card-body">
+      <div class="card-body border-top">
         <h5 class="card-title"><%= f.title %></h5>
         <% f.tags.each do |t| %>
         <p class="card-tag">タグ:<%= link_to t.name, post_blogs_path(tag_id: t.id) %></p>
