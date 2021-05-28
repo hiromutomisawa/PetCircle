@@ -7,15 +7,16 @@
     </div>
     <div class="form-group">
       <%= f.label :title,"タイトル" %><br>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :placeholder => "タイトル"%>
     </div>
     <div class="form-group">
       <%= f.label :body,"本文" %><br>
-      <%= f.text_area :body, :placeholder => "ここに記事を記述します",cols: "80", rows: "10" %>
+      <%= f.text_area :body, :placeholder => "ここに記事を記述",cols: "80", rows: "10" %>
     </div>
     <div class="tag">
-      <%= f.label :tag %>
-      <%= f.text_field :name, value: @tag_list %>
+      <%= f.label :"タグ*" %>
+      <%= f.text_field :name, value: @tag_list, :placeholder => "例：猫,犬,日常"%>
+      <h5><small>*半角カンマ( , )で区切ると複数のタグを付けられます。</small></h5>
     </div>
     <div class="text-center">
       <%= f.submit "新規投稿", class: "btn btn-lg btn-success "%>

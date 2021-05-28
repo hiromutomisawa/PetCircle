@@ -1,13 +1,15 @@
-<div class="card-list-container py-5">
+<div class="card-list-container">
   <div class="row">
     <% post_blogs.each do |f|%>
-    <div class="card m-3 shadow-sm" style="width:15rem;">
-      <%= attachment_image_tag f, :image, class: "card-img-top" %>
+    <div class="card m-2 shadow-sm" style="width:250px;">
+      <%= attachment_image_tag f, :image, class: "card-img-top", format: 'jpeg', fallback: "no_image_show.jpg" %>
       <div class="card-body border-top">
-        <h5 class="card-title"><%= f.title %></h5>
-        <% f.tags.each do |t| %>
-        <p class="card-tag">タグ:<%= link_to t.name, post_blogs_path(tag_id: t.id) %></p>
-        <% end %>
+        <p class="card-title"><small>タイトル：<%= f.title %></small></p>
+        <p><small>ニックネーム：<%= f.user.name %></small></p>
+        <p class="card-tag"><small>タグ:</small>
+          <% f.tags.each do |t| %>
+          <%= link_to t.name, post_blogs_path(tag_id: t.id) %>
+        <% end %></p>
         <p class="card-comment-favorite">
           <small><%= link_to "コメント数 #{f.post_comments.count} ", post_blog_path(f.id) %></small>|
           <% if f.favorited_by?(current_user) %>

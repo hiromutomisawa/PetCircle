@@ -1,29 +1,21 @@
- <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h1>編集画面</h1>
-          <% if @user.errors.any? %>
-            <h3><%= @user.errors.count %>errors prohibited this obj from being saved:</h3>
-            <% @user.errors.full_messages.each do |message| %>
-            <ul>
-              <li><%= message %></li>
-            </ul>
-            <% end %>
-          <% end %>
-        <%= form_with model:@user, local: true do |f| %>
-          <div class="form-group">
-            <label for="profile_image">プロフィール画像</label><br>
-            <%= attachment_image_tag @user, :profile_image , size: "150x150", format: 'jpeg', fallback: "no_image.jpg" %>
-            <%= f.attachment_field :profile_image %><br>
-            <label for="name">ニックネーム</label><br>
-              <%= f.text_field :name %><br>
-            <label for="introduction">自己紹介</label><br>
-            <%= f.text_field :introduction %><br>
-          </div><br>
-          <div>
-            <%= f.submit '更新', class:"btn btn-success" %>
-          </div><br>
-        <% end %>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>編集画面</h1>
+      <%= form_with model:@user, local: true do |f| %>
+      <div class="form-group">
+        <label for="profile_image">プロフィール画像</label><br>
+        <%= attachment_image_tag @user, :profile_image , size: "150x150", format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= f.attachment_field :profile_image %><br>
+        <label for="name">ニックネーム</label><br>
+          <%= f.text_field :name %><br>
+        <label for="introduction">自己紹介</label><br>
+          <%= f.text_area :introduction, cols: "50", rows: "3" %><br>
+      </div><br>
+      <div>
+        <%= f.submit '更新', class:"btn btn-success" %>
+      </div><br>
+      <% end %>
     </div>
   </div>
+</div>

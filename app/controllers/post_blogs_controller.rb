@@ -25,8 +25,11 @@ class PostBlogsController < ApplicationController
     if @post_blog.save
       # save_blogsメソッドでタグを保存。メソッドはモデルで設定
       @post_blog.save_blogs(tag_list)
+      redirect_to post_blog_path(@post_blog)
+    else
+      @tag_lists = Tag.all
+      render :new
     end
-    redirect_to post_blog_path(@post_blog)
   end
 
   def show
@@ -44,7 +47,7 @@ class PostBlogsController < ApplicationController
   def destroy
     @post_blog = PostBlog.find(params[:id])
     @post_blog.destroy
-    redirect_to post_blogs_path
+    redirect_to user_path(@post_blog.user_id)
   end
 
   def update
@@ -52,10 +55,10 @@ class PostBlogsController < ApplicationController
     tag_list = params[:post_blog][:name].split(",")
     if @post_blog.update(post_blog_params)
       @post_blog.save_blogs(tag_list)
-      flash[:success] = "更新が完了しました。"
       redirect_to post_blog_path(@post_blog.id)
     else
-      render action: :edit
+      @tag_lists = Tag.all
+      render :edit
     end
   end
 
