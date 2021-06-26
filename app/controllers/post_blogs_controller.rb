@@ -2,12 +2,11 @@ class PostBlogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @tag_lists = Tag.all
     if params[:tag_id]
-      @tag_lists = Tag.all
-      @tag = Tag.find(params[:tag_id])
-      @post_blogs = @tag.post_blogs.all
+      tag = Tag.find(params[:tag_id])
+      @post_blogs = tag.post_blogs.all
     else
-      @tag_lists = Tag.all
       @post_blogs = PostBlog.all
     end
   end
