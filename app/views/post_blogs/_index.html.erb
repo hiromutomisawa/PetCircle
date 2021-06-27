@@ -4,8 +4,8 @@
     <div class="card m-2 shadow-sm" style="width:250px;">
       <%= attachment_image_tag f, :image, class: "card-img-top", format: 'jpeg', fallback: "no_image_show.jpg" %>
       <div class="card-body border-top">
-        <p class="card-title"><small>タイトル：<%= f.title %></small></p>
-        <p><small>ニックネーム：<%= f.user.name %></small></p>
+        <p class="card-title"><small>タイトル：<%= link_to f.title, post_blog_path(f) %></small></p>
+        <p><small>ニックネーム：<%= link_to f.user.name, user_path(f.user) %></small></p>
         <p class="card-tag"><small>タグ:</small>
           <% f.tags.each do |t| %>
           <%= link_to t.name, post_blogs_path(tag_id: t.id) %>

@@ -10,7 +10,9 @@
       <div class="row">
         <div class="card" style="width: 100%;">
           <div class="card-header">
-            投稿日時：<%= @post_blog.updated_at.strftime('%Y/%m/%d') %><h5><small>タイトル：</small><%= @post_blog.title %></h5>
+            <h5><small>タイトル：</small><%= @post_blog.title %></h5>
+            <p><small>投稿日時：<%= @post_blog.updated_at.strftime('%Y/%m/%d') %></small></p>
+            <p><small>投稿者：</small><%= link_to @user.name, user_path(@user)%></p>
           </div>
           <%= attachment_image_tag @post_blog, :image, class: "card-img", format: 'jpeg', fallback: "no_image_show.jpg" %>
           <div class="card-body">
