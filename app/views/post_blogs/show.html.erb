@@ -50,14 +50,7 @@
         </div>
         <% end %>
         <div class="container">
-          <%= form_with(model:[@post_blog, @post_comment], local: true) do |f| %>
-          <div class="row">
-            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", cols: "80", rows: "5" %>
-          </div>
-          <div class="row mt-1">
-            <%= f.submit "送信する" %>
-          </div>
-          <% end %>
+          <%= render 'post_comments/comment-form', post_blog: @post_blog, post_comment: @post_comment %>
         </div>
       </div>
     </div>
