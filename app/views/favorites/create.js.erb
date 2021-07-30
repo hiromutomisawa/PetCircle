@@ -1,0 +1,2 @@
+<!--$(".favorite-btn").html("< %= escape_javascript(render partial: 'favorites/favorite-btn', locals: {post_blog: @post_blog}) %>");-->
+$(".favorite-btn").html("<%= j(render 'favorites/favorite-btn', post_blog: @post_blog) %>");
